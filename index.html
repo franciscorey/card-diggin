@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card-Diggin' | Diseñador de Cartas</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Incluimos librerías externas necesarias para la automatización -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">CARD-DIGGIN' <span>[Diseñador v1.0]</span></div>
+        <p class="subtitle">Generador automático de cartas físicas y metadatos digitales</p>
+    </header>
+
+    <main class="app-container">
+        <!-- PANEL DE CONTROL (IZQUIERDA) -->
+        <section class="control-panel">
+            <div class="panel-section">
+                <h3>1. Buscar en Catálogo</h3>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Ej: AC/DC Highway to Hell o ID de Apple Music...">
+                    <button id="btn-search">Buscar</button>
+                </div>
+                <small class="help-text">Simulación: Al no tener backend para el JWT de Apple, introduce datos o usa el botón demo.</small>
+                <button id="btn-demo" class="btn-secondary">Cargar Demo (Los Prisioneros)</button>
+            </div>
+
+            <div class="panel-section">
+                <h3>2. Datos Editoriales (Personalizables)</h3>
+                <div class="form-group">
+                    <label for="input-title">Título del Álbum</label>
+                    <input type="text" id="input-title">
+                </div>
+                <div class="form-group">
+                    <label for="input-artist">Artista</label>
+                    <input type="text" id="input-artist">
+                </div>
+                <div class="form-group">
+                    <label for="input-year">Año de Lanzamiento</label>
+                    <input type="text" id="input-year">
+                </div>
+                <div class="form-group">
+                    <label for="input-genre">Género / Estilo</label>
+                    <input type="text" id="input-genre">
+                </div>
+                <div class="form-group">
+                    <label for="input-label">Sello Discográfico</label>
+                    <input type="text" id="input-label" placeholder="Ej: WARNER MUSIC CHILE">
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>3. Créditos de Producción y Músicos</h3>
+                <div class="form-group">
+                    <label for="input-credits">Personal (Separados por guiones)</label>
+                    <textarea id="input-credits" rows="3" placeholder="JORGE GONZALEZ (VOZ Y BAJO) - CLAUDIO NAREA (GUITARRA) - MIGUEL TAPIA (BATERÍA)"></textarea>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>4. Enlace Digital (Para el QR)</h3>
+                <div class="form-group">
+                    <label for="input-url">URL del Visor Digital</label>
+                    <input type="url" id="input-url" value="https://card-diggin.netlify.app/album/estadio-nacional">
+                </div>
+            </div>
+
+            <div class="panel-actions">
+                <button id="btn-export" class="btn-primary">Imprimir / Exportar PDF</button>
+            </div>
+        </section>
+
+        <!-- PANEL DE PREVISUALIZACIÓN DE LA CARTA (DERECHA) -->
+        <section class="preview-panel">
+            <div class="print-zone">
+                <!-- MARCAS DE CORTE SIMULADAS -->
+                <div class="crop-mark top-left"></div>
+                <div class="crop-mark top-right"></div>
+                <div class="crop-mark bottom-left"></div>
+                <div class="crop-mark bottom-right"></div>
+
+                <!-- LA TARJETA (REVERSO) -->
+                <div class="card-back" id="card-element">
+                    <div class="card-inner-frame">
+                        <h1 class="card-album-title" id="card-title">ALBUM TITLE</h1>
+                        
+                        <div class="card-meta-row">
+                            <div class="card-meta-text">
+                                <p><strong>RELEASE DATE:</strong> <span id="card-meta-year">0000</span></p>
+                                <p><strong>ARTIST:</strong> <span id="card-meta-artist">ARTIST NAME</span></p>
+                                <p><strong>GENRE:</strong> <span id="card-meta-genre">GENRE / STYLE</span></p>
+                            </div>
+                            <div class="card-label-logo" id="card-logo-container">
+                                <!-- Logo dinámico o texto del sello -->
+                                <span id="card-text-label">LABEL</span>
+                            </div>
+                        </div>
+
+                        <!-- PALETA DE COLORES AUTOMÁTICA -->
+                        <div class="card-color-palette" id="card-palette">
+                            <div class="color-block" style="background-color: #e5e5e5;"></div>
+                            <div class="color-block" style="background-color: #cccccc;"></div>
+                            <div class="color-block" style="background-color: #999999;"></div>
+                            <div class="color-block" style="background-color: #666666;"></div>
+                            <div class="color-block" style="background-color: #333333;"></div>
+                        </div>
+
+                        <!-- LISTA DE TRACKS (Dos columnas si son muchos) -->
+                        <div class="card-tracks-container" id="card-tracks-wrapper">
+                            <ol class="tracks-list" id="card-tracks">
+                                <li>TRACK LISTING WILL APPEAR HERE</li>
+                            </ol>
+                        </div>
+
+                        <!-- CRÉDITOS -->
+                        <div class="card-credits-box">
+                            <span class="credits-title">CREDITS:</span>
+                            <p id="card-credits-text">PRODUCTION AND MUSICIAN DETAILS GO HERE...</p>
+                        </div>
+                    </div>
+
+                    <!-- FOOTER DE LA CARTA -->
+                    <div class="card-footer-row">
+                        <span id="card-footer-copyright">© LABEL RECORDS</span>
+                        <span class="card-brand">CARD-DIGGIN'</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMAGEN OCULTA O AUXILIAR PARA EXTRACTOR DE COLOR -->
+            <img id="img-buffer" crossorigin="anonymous" src="" style="display:none;">
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
