@@ -1,0 +1,340 @@
+/* CSS PURO - DISEÑO GENERAL Y REPRODUCCIÓN EXACTA DE LA TARJETA */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-app: #f4f3ef;
+    --border-color: #1a1a1a;
+    --panel-bg: #ffffff;
+    --accent: #2f67cc;
+    
+    /* Variables dinámicas de la tarjeta (se alteran con JS) */
+    --card-outer-bg: #89b0c4; /* Color de fondo del borde exterior */
+    --card-inner-bg: #ffffff; /* Fondo contenedor central */
+    --card-text-color: #1a1a1a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-app);
+    color: #1a1a1a;
+}
+
+/* HEADER */
+.app-header {
+    background-color: var(--border-color);
+    color: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 4px solid var(--accent);
+}
+.app-header .logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+.app-header .logo span {
+    color: #888;
+    font-size: 14px;
+    font-weight: normal;
+}
+.app-header .subtitle {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    color: #bbb;
+}
+
+/* CONTENEDOR PRINCIPAL - DISEÑO EN DOS COLUMNAS TRADICIONAL */
+.app-container {
+    display: table;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+
+.control-panel, .preview-panel {
+    display: table-cell;
+    vertical-align: top;
+    background: var(--panel-bg);
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    padding: 25px;
+}
+
+.control-panel {
+    width: 40%;
+}
+
+.preview-panel {
+    width: 60%;
+    text-align: center;
+    background-color: #e0dfdb;
+}
+
+/* SECCIONES DEL PANEL */
+.panel-section {
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 20px;
+}
+.panel-section h3 {
+    margin-top: 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+}
+
+/* FORMULARIOS */
+.search-box {
+    display: table;
+    width: 100%;
+}
+.search-box input {
+    display: table-cell;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    font-size: 14px;
+}
+.search-box button {
+    display: table-cell;
+    padding: 10px 15px;
+    background: var(--border-color);
+    color: white;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    font-weight: bold;
+}
+.help-text {
+    display: block;
+    margin-top: 6px;
+    color: #666;
+    font-size: 11px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid var(--border-color);
+    font-family: inherit;
+    font-size: 13px;
+}
+
+/* BOTONES */
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background: #27ae60;
+    color: white;
+    border: 3px solid var(--border-color);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--border-color);
+}
+.btn-secondary {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #eee;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* AREA DE PREVISUALIZACIÓN Y MARCAS DE CORTE */
+.print-zone {
+    position: relative;
+    display: inline-block;
+    padding: 40px;
+    background: white;
+    border: 1px solid #ddd;
+}
+
+/* MARCAS DE CORTE NATIVAS */
+.crop-mark {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #999;
+}
+.crop-mark.top-left { top: 15px; left: 15px; border-right: 0; border-bottom: 0; }
+.crop-mark.top-right { top: 15px; right: 15px; border-left: 0; border-bottom: 0; }
+.crop-mark.bottom-left { bottom: 15px; left: 15px; border-right: 0; border-top: 0; }
+.crop-mark.bottom-right { bottom: 15px; right: 15px; border-left: 0; border-top: 0; }
+
+/* LA TARJETA (ESTILO REVERSO FIEL AL ADJUNTO) */
+.card-back {
+    width: 450px; /* Proporción ideal para maquetar en pantalla */
+    height: 610px;
+    background-color: var(--card-outer-bg);
+    padding: 30px 25px;
+    text-align: left;
+    color: var(--card-text-color);
+    position: relative;
+    user-select: none;
+}
+
+.card-inner-frame {
+    background-color: var(--card-inner-bg);
+    border-radius: 28px;
+    height: 515px;
+    padding: 25px;
+    position: relative;
+}
+
+.card-album-title {
+    font-family: "Arial Black", Impact, sans-serif;
+    font-size: 26px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+/* METADATA FILA */
+.card-meta-row {
+    display: table;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.card-meta-text {
+    display: table-cell;
+    width: 70%;
+    vertical-align: middle;
+}
+.card-meta-text p {
+    margin: 3px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.card-label-logo {
+    display: table-cell;
+    width: 30%;
+    text-align: right;
+    vertical-align: middle;
+}
+#card-text-label {
+    font-size: 11px;
+    font-weight: 900;
+    border: 2px solid var(--card-text-color);
+    padding: 4px 8px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+/* BARRA DE PALETA CROMÁTICA */
+.card-color-palette {
+    display: table;
+    width: 100%;
+    height: 15px;
+    margin: 15px 0;
+    border-collapse: collapse;
+}
+.color-block {
+    display: table-cell;
+    height: 100%;
+}
+
+/* LISTA DE CANCIONES */
+.card-tracks-container {
+    height: 230px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+/* Ocultar scrollbar visualmente para mantener estética limpia */
+.card-tracks-container::-webkit-scrollbar { display: none; }
+
+.tracks-list {
+    margin: 0;
+    padding-left: 20px;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+.tracks-list li {
+    margin-bottom: 3px;
+}
+
+/* DOBLE COLUMNA CUANDO HAY MUCHOS TRACKS (Como Los Prisioneros) */
+.tracks-two-columns {
+    display: table;
+    width: 100%;
+}
+.tracks-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+}
+
+/* SECCIÓN CRÉDITOS */
+.card-credits-box {
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    right: 25px;
+    text-align: center;
+}
+.credits-title {
+    font-size: 9px;
+    font-weight: bold;
+    color: #777;
+    display: block;
+    margin-bottom: 2px;
+}
+#card-credits-text {
+    margin: 0;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+/* FOOTER MARCA */
+.card-footer-row {
+    position: absolute;
+    bottom: 8px;
+    left: 25px;
+    right: 25px;
+    display: table;
+    width: calc(100% - 50px);
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+#card-footer-copyright {
+    display: table-cell;
+    text-align: left;
+}
+.card-brand {
+    display: table-cell;
+    text-align: right;
+    font-style: italic;
+}
+
+/* ESTILOS DE IMPRESIÓN LIMPIOS */
+@media print {
+    body { background: white; }
+    .control-panel, .app-header { display: none !important; }
+    .preview-panel { border: none; box-shadow: none; background: transparent; padding: 0; margin: 0; width: 100%; }
+    .print-zone { border: none; padding: 0; }
+}
