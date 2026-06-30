@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card-Diggin' | System Creator Panel (v1.7)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=League+Spartan:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="designer.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="logo">CARD-DIGGIN' <span>[System Creator Panel v1.7]</span></div>
+        <p class="subtitle">Módulo de consolidación y exportación de bases de datos JSON autónomas</p>
+    </header>
+
+    <main class="app-container">
+
+        <section class="control-panel">
+            <div class="panel-section">
+                <h3>1. Buscar en Catálogo Oficial</h3>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Ej: Los Prisioneros Corazones...">
+                    <button id="btn-search">Buscar</button>
+                </div>
+                <div id="search-results" class="results-dropdown" style="display:none;"></div>
+            </div>
+
+            <div class="panel-section">
+                <h3>2. Datos Editoriales Básicos</h3>
+
+                <div class="form-group" style="background-color: rgba(0,0,0,0.03); padding: 5px; border-radius: 4px;">
+                    <label for="input-catalog-id" style="color: #666; font-weight: bold;">ID de Catálogo</label>
+                    <input type="text" id="input-catalog-id" readonly
+                        style="background: #e9e9e9; color: #555; cursor: not-allowed; font-weight: bold; font-family: monospace;">
+                </div>
+                <div class="form-group">
+                    <label for="input-title">Título del Álbum (Texto alternativo)</label>
+                    <input type="text" id="input-title">
+                </div>
+                <div class="form-group">
+                    <label for="input-artist">Artista</label>
+                    <input type="text" id="input-artist">
+                </div>
+                <div class="form-group">
+                    <label for="input-year">Año de Lanzamiento</label>
+                    <input type="text" id="input-year">
+                </div>
+                <div class="form-group">
+                    <label for="input-genre">Género / Estilo</label>
+                    <input type="text" id="input-genre">
+                </div>
+                <div class="form-group">
+                    <label for="input-label">Sello Discográfico (Texto alternativo)</label>
+                    <input type="text" id="input-label" placeholder="Ej: EMI / WARNER">
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>3. Assets Gráficos Premium (Reverso)</h3>
+                <div class="form-group">
+                    <label for="file-title-png">PNG Título del Álbum</label>
+                    <input type="file" id="file-title-png" accept="image/png, image/jpeg">
+                </div>
+                <div class="form-group">
+                    <label for="file-label-png">PNG Logo del Sello</label>
+                    <input type="file" id="file-label-png" accept="image/png, image/jpeg">
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>4. Parámetros de Colección e Hitos</h3>
+                <div class="form-group">
+                    <label for="select-edition">Variante de Edición (Frente)</label>
+                    <select id="select-edition">
+                        <option value="EDICIÓN ESTÁNDAR">EDICIÓN ESTÁNDAR</option>
+                        <option value="PRIMERA PRENSADA">PRIMERA PRENSADA</option>
+                        <option value="EDICIÓN ANIVERSARIO">EDICIÓN ANIVERSARIO</option>
+                        <option value="EDICIÓN LIMITADA">EDICIÓN LIMITADA</option>
+                        <option value="EDICIÓN DE AUTOR">EDICIÓN DE AUTOR</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="input-running-time">Duración Total (Running Time)</label>
+                    <input type="text" id="input-running-time">
+                </div>
+                <div class="form-group">
+                    <label for="input-status">Certificación / Estatus</label>
+                    <input type="text" id="input-status">
+                </div>
+                <div class="form-group">
+                    <label for="input-recorded">Estudio de Grabación</label>
+                    <input type="text" id="input-recorded">
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>5. Contenido Premium de Reseña (App 2)</h3>
+                <div class="form-group">
+                    <label for="input-credits">Personal / Músicos (Separados por guiones)</label>
+                    <textarea id="input-credits" rows="2"></textarea>
+                </div>
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="input-liner-notes">Liner Notes / Reseña Extendida de Colección</label>
+                    <textarea id="input-liner-notes" rows="4"
+                        placeholder="Escribe la historia o detalles exclusivos que se leerán en el Visor móvil..."></textarea>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>6. Controles Avanzados de Diseño</h3>
+                <div class="form-group inline-picker">
+                    <label for="picker-bg">Fondo / Borde Tarjeta</label>
+                    <input type="color" id="picker-bg" value="#e0dfdb">
+                </div>
+
+                <div class="form-group toggle-wrapper" style="margin-top:10px;">
+                    <label><input type="checkbox" id="check-hide-inner-front"> Desactivar bloque blanco (Frente
+                        Limpio)</label>
+                </div>
+                <div class="form-group toggle-wrapper">
+                    <label><input type="checkbox" id="check-white-text-front"> Forzar textos en BLANCO (Frente -
+                        Contraste Oscuro)</label>
+                </div>
+
+                <div class="palette-pickers-row">
+                    <label
+                        style="display:block; width:100%; font-size:11px; margin-bottom:6px; text-transform:uppercase; font-weight:bold;">Colores
+                        Barra Separadora</label>
+                    <div class="picker-box"><input type="color" id="picker-p1" value="#e5e5e5"></div>
+                    <div class="picker-box"><input type="color" id="picker-p2" value="#cccccc"></div>
+                    <div class="picker-box"><input type="color" id="picker-p3" value="#999999"></div>
+                    <div class="picker-box"><input type="color" id="picker-p4" value="#333333"></div>
+                </div>
+                <div class="form-group toggles-group" style="margin-top:15px;">
+                    <label for="select-columns">Distribución de Tracks:</label>
+                    <select id="select-columns">
+                        <option value="auto">Automático inteligente</option>
+                        <option value="1">Forzar 1 columna</option>
+                        <option value="2">Forzar 2 columnas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3>7. Destino QR (Raíz del Sitio con ID)</h3>
+                <div class="form-group">
+                    <label for="input-url">URL Base del Visor</label>
+                    <input type="url" id="input-url" value="https://tu-proyecto.netlify.app/?id=">
+                </div>
+                <h3>8. URL de Imagen de Reverso</h3>
+                <div class="form-group">
+                    <label for="input-back-cover-url">URL o Ruta de Imagen de Reverso (Back Cover)</label>
+                    <input type="text" id="input-back-cover-url" placeholder="ej: data/1300519267-b.webp">
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <button type="button" id="btn-export-back-cover" class="btn-secondary"
+                        style="background-color: #4b0082; color: white; width: 100%; padding: 10px; font-weight: bold; border: none; cursor: pointer; border-radius: 4px;">
+                        📸 EXPORTAR BACK COVER PRO (1200x1200px)
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-section export-section">
+                <h3>9. Exportación de Assets</h3>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <button id="btn-export-json" class="btn-primary" style="background-color: #ff4500;">⚡ Exportar
+                        Archivo JSON de Datos</button>
+                    <button id="btn-export" class="btn-primary">Imprimir Pliego PDF</button>
+                </div>
+                <div class="png-actions-grid">
+                    <button id="btn-export-front-png" class="btn-secondary-action">Frente (PNG)</button>
+                    <button id="btn-export-back-png" class="btn-secondary-action">Reverso (PNG)</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-panel">
+            <div class="print-sheet">
+
+                <div class="print-zone-wrap" id="capture-front-zone">
+                    <div class="print-zone">
+                        <div class="crop-mark top-left"></div>
+                        <div class="crop-mark top-right"></div>
+                        <div class="crop-mark bottom-left"></div>
+                        <div class="crop-mark bottom-right"></div>
+
+                        <div class="card-front" id="card-front-element">
+                            <div class="card-front-inner" id="front-inner-container">
+                                <div class="front-artwork-container">
+                                    <img id="card-front-artwork" src="https://via.placeholder.com/600" alt="Cover">
+                                </div>
+                                <div class="front-info-block">
+                                    <h3 class="front-artist" id="front-artist-text">ARTIST NAME</h3>
+                                    <h2 class="front-title" id="front-title-text">ALBUM TITLE</h2>
+                                </div>
+                            </div>
+
+                            <div class="front-qr-isolated-zone">
+                                <div id="qrcode"></div>
+                            </div>
+
+                            <div class="card-footer-row">
+                                <span class="card-brand">CARD-DIGGIN' <span class="footer-separator">/</span> <span
+                                        id="card-front-badge" class="footer-edition-text">EDICIÓN ESTÁNDAR</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face-indicator">CARA FRONTAL</div>
+                </div>
+
+                <div class="print-zone-wrap" id="capture-back-zone">
+                    <div class="print-zone">
+                        <div class="crop-mark top-left"></div>
+                        <div class="crop-mark top-right"></div>
+                        <div class="crop-mark bottom-left"></div>
+                        <div class="crop-mark bottom-right"></div>
+
+                        <div class="card-back" id="card-element">
+                            <div class="card-inner-frame">
+                                <div class="card-title-graphic-area">
+                                    <h1 class="card-album-title" id="card-title">ALBUM TITLE</h1>
+                                    <img id="card-title-png-preview" class="png-embed-title" style="display:none;"
+                                        alt="Album Title Art">
+                                </div>
+
+                                <div class="card-meta-row">
+                                    <div class="card-meta-text">
+                                        <p><strong>RELEASE DATE:</strong> <span id="card-meta-year">0000</span></p>
+                                        <p><strong>ARTIST:</strong> <span id="card-meta-artist">ARTIST NAME</span></p>
+                                        <p><strong>GENRE:</strong> <span id="card-meta-genre">GENRE / STYLE</span></p>
+                                    </div>
+                                    <div class="card-label-logo" id="card-label-wrapper">
+                                        <span id="card-text-label">LABEL</span>
+                                        <img id="card-label-png-preview" class="png-embed-label" style="display:none;"
+                                            alt="Label Logo">
+                                    </div>
+                                </div>
+
+                                <div class="card-color-palette" id="card-palette">
+                                    <div class="color-block" style="background-color: #e5e5e5;"></div>
+                                    <div class="color-block" style="background-color: #cccccc;"></div>
+                                    <div class="color-block" style="background-color: #999999;"></div>
+                                    <div class="color-block" style="background-color: #333333;"></div>
+                                </div>
+
+                                <div class="card-milestones-row">
+                                    <div class="milestone-item"><strong>RUNNING TIME:</strong> <span
+                                            id="card-ms-time">—</span></div>
+                                    <div class="milestone-item"><strong>STATUS:</strong> <span
+                                            id="card-ms-status">—</span></div>
+                                    <div class="milestone-item"
+                                        style="width: 100%; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 2px; margin-top: 2px;">
+                                        <strong>RECORDED AT:</strong> <span id="card-ms-recorded">—</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-tracks-container" id="card-tracks-wrapper">
+                                    <ol class="tracks-list" id="card-tracks">
+                                        <li><span>TRACK LISTING WILL APPEAR HERE</span></li>
+                                    </ol>
+                                </div>
+
+                                <div class="card-credits-box">
+                                    <span class="credits-title">CREDITS:</span>
+                                    <p id="card-credits-text">PRODUCTION AND MUSICIAN DETAILS GO HERE...</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer-row">
+                                <span id="card-footer-copyright">© LABEL RECORDS</span>
+                                <span class="card-brand">CARD-DIGGIN'</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face-indicator">REVERSO / TRASERA</div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <img id="img-buffer" crossorigin="anonymous" src="" style="display:none;">
+
+    <script src="designer.js"></script>
+</body>
+
+</html>

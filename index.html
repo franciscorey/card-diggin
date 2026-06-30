@@ -3,139 +3,428 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card-Diggin' | Diseñador de Cartas</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Incluimos librerías externas necesarias para la automatización -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>Card-Diggin' // Personal Audio Archive System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=League+Spartan:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #111111;
+            --bg-light: #e0dfdb;
+            --text-dark: #000000;
+            --text-light: #ffffff;
+            --accent: #ff4500;
+            --font-spartan: 'League Spartan', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: var(--font-inter);
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR EDITORIAL LIMPIA */
+        .landing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            border-bottom: 2px solid var(--text-dark);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            font-family: var(--font-spartan);
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .system-status {
+            font-size: 10px;
+            font-weight: bold;
+            background: var(--text-dark);
+            color: var(--bg-light);
+            padding: 4px 10px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1.2fr 0.8fr;
+                margin: 100px auto;
+            }
+        }
+
+        .hero-text-zone h1 {
+            font-family: var(--font-spartan);
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -2px;
+            margin: 0 0 20px 0;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text-zone h1 { font-size: 84px; }
+        }
+
+        .hero-text-zone p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+            opacity: 0.85;
+            max-width: 550px;
+        }
+
+        /* ESCÁNER INTERACTIVO SIMULADO */
+        .scanner-mockup-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border: 3px solid var(--text-dark);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            position: relative;
+            text-align: center;
+        }
+
+        .qr-target-zone {
+            width: 180px;
+            height: 180px;
+            border: 3px dashed var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            position: relative;
+            background: rgba(255, 69, 0, 0.02);
+            animation: pulse-border 2s infinite ease-in-out;
+        }
+
+        .scanner-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 8px var(--accent);
+            animation: scan-move 2.5s infinite linear;
+        }
+
+        .scanner-mockup-box h3 {
+            font-family: var(--font-spartan);
+            font-size: 18px;
+            margin: 25px 0 5px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .scanner-mockup-box p {
+            font-size: 13px;
+            opacity: 0.6;
+            margin: 0;
+        }
+
+        /* SECCIÓN CARACTERÍSTICAS (GRID EDITORIAL) */
+        .features-grid {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card .icon {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            font-family: var(--font-spartan);
+            font-size: 20px;
+            margin: 0 0 10px 0;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            line-height: 1.5;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        /* VITRINA DINÁMICA DE DISCOS DE DATOS */
+        .showcase-section {
+            background: var(--text-dark);
+            color: var(--bg-light);
+            padding: 80px 40px;
+        }
+
+        .showcase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .showcase-header h2 {
+            font-family: var(--font-spartan);
+            font-size: 32px;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .btn-refresh {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.4);
+            color: var(--bg-light);
+            padding: 6px 14px;
+            font-size: 11px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .btn-refresh:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .cards-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        /* TARJETITA MINI DE LA VITRINA */
+        .mini-album-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .mini-album-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .mini-cover-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .mini-cover-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mini-card-title {
+            font-family: var(--font-spartan);
+            font-weight: 900;
+            font-size: 14px;
+            margin: 0 0 4px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+        }
+
+        .mini-card-artist {
+            font-size: 11px;
+            opacity: 0.6;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ANIMACIONES */
+        @keyframes scan-move {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: var(--accent); }
+            50% { border-color: rgba(255, 69, 0, 0.2); }
+        }
+
+        .footer-landing {
+            text-align: center;
+            padding: 40px;
+            font-size: 12px;
+            opacity: 0.5;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="app-header">
-        <div class="logo">CARD-DIGGIN' <span>[Diseñador v1.0]</span></div>
-        <p class="subtitle">Generador automático de cartas físicas y metadatos digitales</p>
+    <header class="landing-header">
+        <div class="brand-logo">Card-Diggin'</div>
+        <div class="system-status">● Player Online</div>
     </header>
 
-    <main class="app-container">
-        <!-- PANEL DE CONTROL (IZQUIERDA) -->
-        <section class="control-panel">
-            <div class="panel-section">
-                <h3>1. Buscar en Catálogo</h3>
-                <div class="search-box">
-                    <input type="text" id="search-input" placeholder="Ej: AC/DC Highway to Hell o ID de Apple Music...">
-                    <button id="btn-search">Buscar</button>
-                </div>
-                <small class="help-text">Simulación: Al no tener backend para el JWT de Apple, introduce datos o usa el botón demo.</small>
-                <button id="btn-demo" class="btn-secondary">Cargar Demo (Los Prisioneros)</button>
+    <main class="hero-section">
+        <div class="hero-text-zone">
+            <h1>DIGITAL<br>CARD ARCHIVE.</h1>
+            <p>Transforma tu colección musical en un ecosistema tangible y físico. Explora portadas personalizadas interactivas, lee las notas de producción originales y reproduce tus álbumes directamente escaneando tus tarjetas impresas.</p>
+        </div>
+        
+        <div class="scanner-mockup-box">
+            <div class="qr-target-zone">
+                <div class="scanner-line"></div>
+                📷
             </div>
-
-            <div class="panel-section">
-                <h3>2. Datos Editoriales (Personalizables)</h3>
-                <div class="form-group">
-                    <label for="input-title">Título del Álbum</label>
-                    <input type="text" id="input-title">
-                </div>
-                <div class="form-group">
-                    <label for="input-artist">Artista</label>
-                    <input type="text" id="input-artist">
-                </div>
-                <div class="form-group">
-                    <label for="input-year">Año de Lanzamiento</label>
-                    <input type="text" id="input-year">
-                </div>
-                <div class="form-group">
-                    <label for="input-genre">Género / Estilo</label>
-                    <input type="text" id="input-genre">
-                </div>
-                <div class="form-group">
-                    <label for="input-label">Sello Discográfico</label>
-                    <input type="text" id="input-label" placeholder="Ej: WARNER MUSIC CHILE">
-                </div>
-            </div>
-
-            <div class="panel-section">
-                <h3>3. Créditos de Producción y Músicos</h3>
-                <div class="form-group">
-                    <label for="input-credits">Personal (Separados por guiones)</label>
-                    <textarea id="input-credits" rows="3" placeholder="JORGE GONZALEZ (VOZ Y BAJO) - CLAUDIO NAREA (GUITARRA) - MIGUEL TAPIA (BATERÍA)"></textarea>
-                </div>
-            </div>
-
-            <div class="panel-section">
-                <h3>4. Enlace Digital (Para el QR)</h3>
-                <div class="form-group">
-                    <label for="input-url">URL del Visor Digital</label>
-                    <input type="url" id="input-url" value="https://card-diggin.netlify.app/album/estadio-nacional">
-                </div>
-            </div>
-
-            <div class="panel-actions">
-                <button id="btn-export" class="btn-primary">Imprimir / Exportar PDF</button>
-            </div>
-        </section>
-
-        <!-- PANEL DE PREVISUALIZACIÓN DE LA CARTA (DERECHA) -->
-        <section class="preview-panel">
-            <div class="print-zone">
-                <!-- MARCAS DE CORTE SIMULADAS -->
-                <div class="crop-mark top-left"></div>
-                <div class="crop-mark top-right"></div>
-                <div class="crop-mark bottom-left"></div>
-                <div class="crop-mark bottom-right"></div>
-
-                <!-- LA TARJETA (REVERSO) -->
-                <div class="card-back" id="card-element">
-                    <div class="card-inner-frame">
-                        <h1 class="card-album-title" id="card-title">ALBUM TITLE</h1>
-                        
-                        <div class="card-meta-row">
-                            <div class="card-meta-text">
-                                <p><strong>RELEASE DATE:</strong> <span id="card-meta-year">0000</span></p>
-                                <p><strong>ARTIST:</strong> <span id="card-meta-artist">ARTIST NAME</span></p>
-                                <p><strong>GENRE:</strong> <span id="card-meta-genre">GENRE / STYLE</span></p>
-                            </div>
-                            <div class="card-label-logo" id="card-logo-container">
-                                <!-- Logo dinámico o texto del sello -->
-                                <span id="card-text-label">LABEL</span>
-                            </div>
-                        </div>
-
-                        <!-- PALETA DE COLORES AUTOMÁTICA -->
-                        <div class="card-color-palette" id="card-palette">
-                            <div class="color-block" style="background-color: #e5e5e5;"></div>
-                            <div class="color-block" style="background-color: #cccccc;"></div>
-                            <div class="color-block" style="background-color: #999999;"></div>
-                            <div class="color-block" style="background-color: #666666;"></div>
-                            <div class="color-block" style="background-color: #333333;"></div>
-                        </div>
-
-                        <!-- LISTA DE TRACKS (Dos columnas si son muchos) -->
-                        <div class="card-tracks-container" id="card-tracks-wrapper">
-                            <ol class="tracks-list" id="card-tracks">
-                                <li>TRACK LISTING WILL APPEAR HERE</li>
-                            </ol>
-                        </div>
-
-                        <!-- CRÉDITOS -->
-                        <div class="card-credits-box">
-                            <span class="credits-title">CREDITS:</span>
-                            <p id="card-credits-text">PRODUCTION AND MUSICIAN DETAILS GO HERE...</p>
-                        </div>
-                    </div>
-
-                    <!-- FOOTER DE LA CARTA -->
-                    <div class="card-footer-row">
-                        <span id="card-footer-copyright">© LABEL RECORDS</span>
-                        <span class="card-brand">CARD-DIGGIN'</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- IMAGEN OCULTA O AUXILIAR PARA EXTRACTOR DE COLOR -->
-            <img id="img-buffer" crossorigin="anonymous" src="" style="display:none;">
-        </section>
+            <h3>ESCANEA UNA TARJETA</h3>
+            <p>Usa la cámara de tu dispositivo móvil para iniciar la reproducción inmersiva 3D instantáneamente.</p>
+        </div>
     </main>
 
-    <script src="app.js"></script>
+    <section class="features-grid">
+        <div class="feature-card">
+            <div class="icon">📐</div>
+            <h4>Físicas Cinemáticas 3D</h4>
+            <p>Visualiza carátulas interactivas con físicas de rotación de alta fidelidad. Voltea la chaqueta para inspeccionar el arte trasero y los créditos.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🎨</div>
+            <h4>Cromatismo Inteligente</h4>
+            <p>La interfaz del reproductor muta de manera autónoma calculando las paletas predominantes e inyectando contrastes accesibles de lectura.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📻</div>
+            <h4>Liner Notes y Audio</h4>
+            <p>Conserva reseñas críticas de producción, variantes de edición limitadas y reproduce pistas de audio integradas vía API.</p>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <div class="showcase-container">
+            <div class="showcase-header">
+                <div>
+                    <h2>EXPLORAR COLECCIÓN LOCAL</h2>
+                </div>
+                <button class="btn-refresh" id="btn-shuffle">🎲 Mezclar Galería</button>
+            </div>
+            
+            <div class="cards-deck" id="cards-deck-container"></div>
+        </div>
+    </section>
+
+    <footer class="footer-landing">
+        Card-Diggin' System // Prototipo de Audio e Información Arquitectónica.
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const deckContainer = document.getElementById("cards-deck-container");
+            const shuffleBtn = document.getElementById("btn-shuffle");
+
+            // Lista de archivos JSON que viven exactamente dentro de tu carpeta data/
+            const localArchive = [
+                "1440854851", 
+                "1440656001",
+                "1440758223"
+            ];
+
+            const fetchAndRenderDeck = async () => {
+                deckContainer.innerHTML = "";
+                
+                // Mezclamos el array para alternar las posiciones en la vitrina
+                const shuffled = [...localArchive].sort(() => 0.5 - Math.random());
+                const selection = shuffled.slice(0, 4);
+
+                for (const id of selection) {
+                    try {
+                        // Consumimos directamente los JSON locales correspondientes
+                        const response = await fetch(`data/${id}.json`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            createMiniCard(id, data.itunes_backup.title, data.itunes_backup.artist, data.itunes_backup.cover_url);
+                        } else {
+                            createMiniCard(id, `Álbum ID: ${id}`, "Ver archivo JSON", "https://placehold.co/400x400/000000/ffffff?text=JSON");
+                        }
+                    } catch (e) {
+                        createMiniCard(id, `Álbum ID: ${id}`, "Explorar Edición", "https://placehold.co/400x400/000000/ffffff?text=JSON");
+                    }
+                }
+            };
+
+            const createMiniCard = (id, title, artist, coverUrl) => {
+                const cardLink = document.createElement("a");
+                // Modificado para redirigir dinámicamente al visor pasando el ID correspondiente al JSON
+                cardLink.href = `viewer.html?id=${id}`;
+                cardLink.className = "mini-album-card";
+                cardLink.innerHTML = `
+                    <div class="mini-cover-wrapper">
+                        <img src="${coverUrl}" alt="${title}" loading="lazy">
+                    </div>
+                    <h3 class="mini-card-title">${title}</h3>
+                    <p class="mini-card-artist">${artist}</p>
+                `;
+                deckContainer.appendChild(cardLink);
+            };
+
+            if (shuffleBtn) {
+                shuffleBtn.addEventListener("click", fetchAndRenderDeck);
+            }
+
+            // Inicialización de la vitrina
+            fetchAndRenderDeck();
+        });
+    </script>
 </body>
 </html>

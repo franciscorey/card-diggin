@@ -1,0 +1,702 @@
+/* CSS NATIVO - STUDIO ARCHITECTURE V1.6 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-app: #f2f1ed;
+    --border-color: #000000;
+    --panel-bg: #ffffff;
+    --accent: #ff4500;
+
+    /* Variables de la tarjeta */
+    --card-outer-bg: #e0dfdb;
+    --card-inner-bg: #ffffff;
+    --card-text-color: #000000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-app);
+    color: #000000;
+}
+
+/* TIPOGRAFÍAS */
+.card-album-title,
+.front-title,
+.front-artist,
+strong,
+.panel-section h3,
+label,
+.btn-primary,
+.footer-edition-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+.tracks-list,
+.milestone-item span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.tracks-list li span {
+    font-weight: 700;
+}
+
+.card-brand {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+/* LAYOUT ESTRUCTURAL */
+.app-header {
+    background-color: var(--border-color);
+    color: #ffffff;
+    padding: 15px 30px;
+}
+
+.app-header .logo {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 24px;
+}
+
+.app-header .logo span {
+    color: #888;
+    font-size: 14px;
+}
+
+.app-header .subtitle {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: #bbb;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 10px auto;
+    padding: 0 20px;
+}
+
+.control-panel {
+    flex: 0 0 35%;
+    background: var(--panel-bg);
+    border: 3px solid var(--border-color);
+    padding: 20px;
+    height: fit-content;
+}
+
+.preview-panel {
+    flex: 1;
+    background-color: #d1cfca;
+    border: 3px solid var(--border-color);
+    padding: 20px;
+    text-align: center;
+}
+
+.panel-section {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 15px;
+}
+
+.panel-section h3 {
+    margin-top: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.search-box {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.search-box input {
+    display: table-cell;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+}
+
+.search-box button {
+    display: table-cell;
+    padding: 10px 15px;
+    background: var(--border-color);
+    color: white;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+.results-dropdown {
+    background: white;
+    border: 2px solid var(--border-color);
+    max-height: 250px;
+    overflow-y: auto;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.result-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.result-item:hover {
+    background-color: #f5f5f5;
+}
+
+.result-item img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid var(--border-color);
+    font-size: 13px;
+    background: #fff;
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-wrapper label {
+    font-size: 12px;
+    text-transform: none;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.toggle-wrapper input {
+    width: auto;
+    margin-right: 8px;
+}
+
+.inline-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inline-picker input[type="color"] {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+.palette-pickers-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.picker-box {
+    flex: 1;
+    min-width: 45px;
+}
+
+.picker-box input[type="color"] {
+    width: 100%;
+    height: 30px;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+/* SECCIÓN EXPORTACIÓN */
+.png-actions-grid {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-secondary-action {
+    flex: 1;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid var(--border-color);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-secondary-action:hover {
+    background: #eee;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #000000;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* PREVISUALIZACIÓN DE CARTAS */
+.print-sheet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.print-zone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.print-zone {
+    position: relative;
+    display: inline-block;
+    padding: 30px;
+    background: white;
+}
+
+.face-indicator {
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+}
+
+/* MARCAS DE CORTE */
+.crop-mark {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #696969;
+    z-index: 0;
+}
+
+/* Top Left */
+.crop-mark.top-left {
+    top: 30px;
+    left: 30px;
+    border-left: 0;
+    border-top: 0;
+    transform: translate(-100%, -100%); /* Se desplaza hacia afuera del área de corte */
+}
+
+/* Top Right */
+.crop-mark.top-right {
+    top: 30px;
+    right: 30px;
+    border-right: 0;
+    border-top: 0;
+    transform: translate(100%, -100%);
+}
+
+/* Bottom Left */
+.crop-mark.bottom-left {
+    bottom: 30px;
+    left: 30px;
+    border-left: 0;
+    border-bottom: 0;
+    transform: translate(-100%, 100%);
+}
+
+/* Bottom Right */
+.crop-mark.bottom-right {
+    bottom: 30px;
+    right: 30px;
+    border-right: 0;
+    border-bottom: 0;
+    transform: translate(100%, 100%);
+}
+
+/* CUERPO DE LAS TARJETAS */
+.card-front,
+.card-back {
+    width: 412px;
+    height: 562px;
+    background-color: var(--card-outer-bg);
+    padding: 25px 22px;
+    text-align: left;
+    color: var(--card-text-color);
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 12px var(--card-outer-bg); /* Simula el sangrado de la tarjeta */
+}
+
+.card-front-inner {
+    background-color: #ffffff;
+    border-radius: 24px;
+    height: 505px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* MODIFICADORES FRONTALES AL VUELO */
+.card-front.front-clean-layout .card-front-inner {
+    background-color: transparent !important;
+    padding: 10px 0;
+}
+
+.card-front.front-clean-layout .front-artwork-container {
+    width: 100%;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.card-front.front-text-white {
+    color: #ffffff !important;
+}
+
+.card-front.front-text-white .front-artist {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.front-artwork-container {
+    width: 92%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.front-artwork-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.front-info-block {
+    margin-top: 15px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.front-title {
+    font-size: 22px;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.front-artist {
+    font-size: 15px;
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    color: #555;
+    text-align: center;
+}
+
+/* NUEVO: QR AISLADO FLOTANTE ASIMÉTRICO (FRENTE) */
+.front-qr-isolated-zone {
+    position: absolute;
+    bottom: 24px;
+    right: 22px;
+    width: 72px;
+    height: 72px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 3px;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Re-escalar el QR interno para ajustarse al módulo compacto flotante */
+.front-qr-isolated-zone #qrcode img,
+.front-qr-isolated-zone #qrcode canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* MODIFICACIÓN ELEMENTOS DEL PIE DE PÁGINA (FRENTE/REVERSO) */
+.card-footer-row {
+    position: absolute;
+    bottom: 8px;
+    left: 22px;
+    right: 22px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: inherit;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.card-front .card-footer-row {
+    color: inherit;
+}
+
+/* Sigue el color del modificador de contraste */
+.footer-separator {
+    margin: 0 4px;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+.footer-edition-text {
+    font-size: 9px;
+    opacity: 0.85;
+}
+
+/* TRASERA ARCHITECTURE */
+.card-inner-frame {
+    background-color: var(--card-inner-bg);
+    border-radius: 24px;
+    height: 505px;
+    padding: 22px;
+    position: relative;
+}
+
+.card-title-graphic-area {
+    width: 100%;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.card-album-title {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1;
+    width: 100%;
+}
+
+.png-embed-title {
+    max-width: 100%;
+    max-height: 45px;
+    object-fit: contain;
+}
+
+.card-meta-row {
+    display: table;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.card-meta-text {
+    display: table-cell;
+    width: 70%;
+    vertical-align: middle;
+}
+
+.card-meta-text p {
+    margin: 2px 0;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.card-label-logo {
+    display: table-cell;
+    width: 30%;
+    text-align: right;
+    vertical-align: middle;
+}
+
+#card-text-label {
+    font-size: 10px;
+    font-weight: 700;
+    border: 2px solid var(--card-text-color);
+    padding: 3px 6px;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.png-embed-label {
+    max-width: 85px;
+    max-height: 32px;
+    object-fit: contain;
+    display: inline-block;
+}
+
+.card-color-palette {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Fuerza 4 columnas idénticas */
+    gap: 0;            /* Sin separación entre colores */
+    height: 12px;      /* Ajusta el alto según tu diseño de tarjeta */
+    width: 100%;
+    margin: 8px 0;    /* Margen vertical de separación */
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.card-color-palette .color-block {
+    height: 100%;
+    width: 100%;
+}
+
+.card-milestones-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    font-size: 10px;
+}
+
+.milestone-item {
+    width: 48%;
+    text-transform: uppercase;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-tracks-container {
+    height: 185px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.card-tracks-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tracks-list {
+    margin: 0;
+    padding-left: 24px;
+    font-size: 11px;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.tracks-list li {
+    margin-bottom: 2px;
+}
+
+.tracks-two-columns {
+    display: table;
+    width: 100%;
+}
+
+.tracks-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+}
+
+.card-credits-box {
+    position: absolute;
+    bottom: 15px;
+    left: 22px;
+    right: 22px;
+    text-align: center;
+}
+
+.credits-title {
+    font-size: 8px;
+    color: #666;
+    display: block;
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+
+#card-credits-text {
+    margin: 0;
+    font-size: 9px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.card-back .card-footer-row {
+    color: white;
+}
+
+/* RESPONSIVE & PRINT SETUP */
+@media (max-width: 992px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .control-panel,
+    .preview-panel {
+        width: 100%;
+        flex: none;
+    }
+
+    .print-sheet {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .control-panel,
+    .app-header,
+    .face-indicator {
+        display: none !important;
+    }
+
+    .preview-panel {
+        border: none;
+        background: transparent;
+        padding: 0;
+        width: 100%;
+    }
+
+    .print-sheet {
+        gap: 40px;
+    }
+
+    .print-zone {
+        box-shadow: none;
+        padding: 35px;
+        page-break-inside: avoid;
+    }
+}

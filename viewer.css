@@ -1,0 +1,375 @@
+:root {
+    --dynamic-bg: #e0dfdb;
+    --text-color: #000000;
+    --card-inner-bg: #ffffff;
+    --font-spartan: 'League Spartan', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111111;
+    font-family: var(--font-inter);
+    color: var(--text-color);
+    transition: background 0.4s ease;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR FLUIDO CON AIRE */
+.viewer-container {
+    background-color: var(--dynamic-bg);
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background-color 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+}
+
+.brand-logo {
+    font-family: var(--font-spartan);
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+}
+
+.status-badge {
+    font-size: 10px;
+    font-weight: bold;
+    background: var(--text-color);
+    color: var(--dynamic-bg);
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+}
+
+/* DISTRIBUCIÓN HÍBRIDA (MÓVIL VERTICAL POR DEFECTO) */
+.main-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* --- ESCENARIO 3D DEL VINILO --- */
+.interactive-media-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- ESCENA TRIDIMENSIONAL --- */
+.scene-3d {
+    width: 340px;
+    height: 340px;
+    perspective: 1400px;
+    margin-bottom: 25px;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 100;
+}
+
+.album-card-3d {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.album-card-3d.flipped {
+    transform: rotateY(180deg);
+}
+
+.face-3d {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.front-jacket {
+    background: #000000;
+    transform: rotateY(0deg);
+}
+
+/* Cara trasera invertida en el espacio 3D para renderizado correcto */
+.back-jacket {
+    background: #000000;
+    transform: rotateY(180deg);
+}
+
+.front-jacket img, .back-jacket img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- ESTADO MODO ZOOM INMERSIVO (CORREGIDO) --- */
+body.zoom-active {
+    overflow: hidden;
+}
+
+body.zoom-active .metadata-content-zone,
+body.zoom-active .viewer-header,
+body.zoom-active .viewer-footer {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.metadata-content-zone, .viewer-header, .viewer-footer {
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                visibility 0.5s ease;
+}
+
+body.zoom-active .main-layout-grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+/* Modificaciones de espaciado superior y remoción de sombras fantasma */
+body.zoom-active .scene-3d {
+    transform: scale(1.75);
+    margin-top: 30px; /* Despega el disco del borde superior de la pantalla */
+    box-shadow: none !important; /* Quita el halo difuminado negro */
+}
+
+body.zoom-active .interactive-media-zone {
+    z-index: 999;
+}
+
+body.zoom-active .media-controls-row {
+    margin-top: 125px;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    body.zoom-active .scene-3d {
+        transform: scale(1.25);
+        margin-top: 20px;
+    }
+}
+
+/* Botones UI de Interacción */
+.media-controls-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    z-index: 101;
+    transition: margin 0.5s ease, transform 0.5s ease;
+}
+
+.btn-interactive-ui {
+    background: transparent;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-interactive-ui:hover {
+    background: var(--text-color);
+    color: var(--dynamic-bg);
+}
+
+/* --- COLUMNA DE DATOS EDITORIALES Y TEXTOS --- */
+.metadata-content-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.album-editorial-header h1 {
+    font-family: var(--font-spartan);
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 0.9;
+    margin: 10px 0 5px 0;
+    letter-spacing: -1.5px;
+}
+
+.album-editorial-header h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    opacity: 0.8;
+}
+
+.album-meta-specs {
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0.6;
+    margin: 0;
+}
+
+.edition-pill {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 900;
+    background: #ff4500;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+}
+
+/* REPRODUCTOR */
+.audio-player-box {
+    background: var(--text-color);
+    color: var(--dynamic-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.track-playing-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.playing-label {
+    font-size: 9px;
+    opacity: 0.5;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#current-track-title {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: var(--font-spartan);
+}
+
+audio {
+    width: 100%;
+}
+
+/* SECCIONES DE RESEÑAS Y TRACKLIST */
+.editorial-section {
+    background: var(--card-inner-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.editorial-section h3, .tracks-section h3 {
+    font-size: 11px;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    margin: 0 0 15px 0;
+    font-weight: bold;
+}
+
+.editorial-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.85;
+    text-align: justify;
+}
+
+.credits-text {
+    font-size: 12px !important;
+    font-weight: bold;
+    line-height: 1.5 !important;
+}
+
+/* LISTA DE PISTAS */
+.track-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--card-inner-bg);
+    margin-bottom: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.track-item:hover {
+    transform: translateX(4px);
+    border-color: var(--text-color);
+}
+
+.track-item.active-track {
+    background: var(--text-color);
+    color: var(--dynamic-bg);
+}
+
+.track-number {
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 15px;
+    opacity: 0.5;
+}
+
+.track-name {
+    flex-grow: 1;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.play-icon {
+    font-size: 12px;
+}
+
+.viewer-footer {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 15px;
+    margin-top: 5px;
+    font-size: 11px;
+    opacity: 0.5;
+    text-align: center;
+}
+
+@media (min-width: 768px) or (orientation: landscape) {
+    .main-layout-grid {
+        grid-template-columns: 400px 1fr;
+        gap: 60px;
+        align-items: start;
+        padding: 20px 0;
+    }
+    
+    .interactive-media-zone {
+        position: sticky;
+        top: 40px;
+    }
+
+    .scene-3d {
+        width: 360px;
+        height: 360px;
+    }
+
+    .album-editorial-header h1 {
+        font-size: 54px;
+    }
+}

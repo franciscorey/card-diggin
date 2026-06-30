@@ -1,0 +1,88 @@
+{
+  "id": "1034044126",
+  "itunes_backup": {
+    "title": "Green Is Blues",
+    "artist": "Al Green",
+    "year": "1969",
+    "genre": "Soul",
+    "cover_url": "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/aa/22/c7/aa22c743-c56f-6244-3e7b-1bf4e8352e0c/886445475111.jpg/600x600bb.jpg",
+    "tracks": [
+      {
+        "number": 1,
+        "title": "One Woman",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/47/4d/42/474d42c0-2757-d3d1-568a-fdf44c52d53c/mzaf_15149254889419551845.plus.aac.p.m4a"
+      },
+      {
+        "number": 2,
+        "title": "Talk to Me",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/11/5d/ce/115dcec7-cc33-194a-1942-a6bc44d5b02d/mzaf_2472849844603935869.plus.aac.p.m4a"
+      },
+      {
+        "number": 3,
+        "title": "My Girl",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/02/e9/ca/02e9ca7a-0b2b-0314-f31d-7b68b9e07673/mzaf_10508347229409739462.plus.aac.p.m4a"
+      },
+      {
+        "number": 4,
+        "title": "The Letter",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/52/a8/40/52a84087-62b2-faee-57e7-920b465732b9/mzaf_7861518741607048636.plus.aac.p.m4a"
+      },
+      {
+        "number": 5,
+        "title": "I Stand Accused",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/10/f7/c7/10f7c758-cfbc-69cf-08e4-a5aee449532b/mzaf_9106009808808357039.plus.aac.p.m4a"
+      },
+      {
+        "number": 6,
+        "title": "Gotta Find a New World",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/5d/a8/3a/5da83afd-f1df-0321-49b0-63105c716da3/mzaf_8706361276049974583.plus.aac.p.m4a"
+      },
+      {
+        "number": 7,
+        "title": "What Am I Gonna Do with Myself",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/96/b6/49/96b64925-3719-463d-8ad1-6fb772fa3948/mzaf_18380602122522408028.plus.aac.p.m4a"
+      },
+      {
+        "number": 8,
+        "title": "Tomorrow's Dream",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/d4/a7/8b/d4a78bce-6d44-0129-af5b-7b8dbfcac8af/mzaf_11039397463145681600.plus.aac.p.m4a"
+      },
+      {
+        "number": 9,
+        "title": "Get Back Baby",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0b/48/e1/0b48e169-987b-052b-ec18-28fceaeeb91e/mzaf_2268331826863662037.plus.aac.p.m4a"
+      },
+      {
+        "number": 10,
+        "title": "Get Back",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/a4/6c/d3/a46cd39a-1aef-38f7-f2a8-7fdfd9719f30/mzaf_14401818902984618330.plus.aac.p.m4a"
+      },
+      {
+        "number": 11,
+        "title": "Summertime",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/e5/c1/e7/e5c1e7b0-539c-dbc2-0ffc-0e9e9d38ef9e/mzaf_14933920682929075948.plus.aac.p.m4a"
+      }
+    ]
+  },
+  "editorial_data": {
+    "label_text": "2009 Hi Records",
+    "title_png_local": "",
+    "label_png_local": "",
+    "recorded_at": "Royal Studios, Memphis",
+    "status": "#3 BillBoard R&B",
+    "running_time": "28:53",
+    "credits": " Al Green (voz principal) - Willie Mitchell (productor e ingeniero de sonido) - Joe Cuoghi (supervisor de grabación) - Mabon Hodges (guitarra) - Leroy Hodges (bajo) - Charles Hodges (órgano) - Howard Grimes (batería) - Al Jackson (batería) - Archie Turner (piano) - Andrew Love (saxo tenor).",
+    "liner_notes": "Green Is Blues es el segundo álbum de estudio de Al Green, publicado en 1969. Marcó el inicio de su legendaria colaboración con el productor Willie Mitchell. El disco es una mezcla de soul sureño, pop y R&B que ayudó a definir su icónico estilo vocal.",
+    "card_bg_color": "#c2c66d",
+    "palette_colors": [
+      "#4c4b4e",
+      "#c2c66e",
+      "#4f91bf",
+      "#9aba6d"
+    ],
+    "front_clean": true,
+    "front_dark_mode": true,
+    "edition_variant": "EDICIÓN ESTÁNDAR",
+    "back_cover_url": "data/1034044126-b.webp"
+  }
+}

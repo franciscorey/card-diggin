@@ -1,0 +1,82 @@
+{
+  "id": "1300519267",
+  "itunes_backup": {
+    "title": "Compacto",
+    "artist": "Papanegro",
+    "year": "2005",
+    "genre": "Funk",
+    "cover_url": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/08/01/4c/08014c97-48d4-04f9-d592-fc0cdc563c34/3614591535970.jpg/600x600bb.jpg",
+    "tracks": [
+      {
+        "number": 1,
+        "title": "Todo Es Tuyo",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/a9/a8/73/a9a873c2-04f1-6076-9ed1-0f6ba6d003cb/mzaf_5289297899192139140.plus.aac.p.m4a"
+      },
+      {
+        "number": 2,
+        "title": "Epitafio",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/4c/88/17/4c8817cc-5259-81b9-df54-ed15759b9c45/mzaf_1096999759174111407.plus.aac.p.m4a"
+      },
+      {
+        "number": 3,
+        "title": "Nadie Vigila",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/84/00/d0/8400d0dc-af55-4292-1b82-75e874e67b55/mzaf_2084533115515235722.plus.aac.p.m4a"
+      },
+      {
+        "number": 4,
+        "title": "Oye Amigo",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/e4/f4/ef/e4f4ef3e-ae95-a746-22a2-98df83f682d5/mzaf_7387563254856544386.plus.aac.p.m4a"
+      },
+      {
+        "number": 5,
+        "title": "Autonomía",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/b3/54/85/b354858f-ddfd-64da-d99c-c7976d35a1f5/mzaf_17174536255048705375.plus.aac.p.m4a"
+      },
+      {
+        "number": 6,
+        "title": "Un Paso Más (feat. Luz Eliana)",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/4f/ad/cf/4fadcf05-764d-afaa-441f-e71f8cf7bd32/mzaf_13437177211460825360.plus.aac.p.m4a"
+      },
+      {
+        "number": 7,
+        "title": "Avanzo Mientras Voy",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/97/f5/1d/97f51d76-0fcc-4768-92fe-eb9d40fb6287/mzaf_556021802330489643.plus.aac.p.m4a"
+      },
+      {
+        "number": 8,
+        "title": "Y Ahora... La Alegría (feat. DJ Pharuk)",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/8e/b5/5d/8eb55d75-c340-78ab-2fa9-6a5aad347d5c/mzaf_11178332490866665504.plus.aac.p.m4a"
+      },
+      {
+        "number": 9,
+        "title": "Abusé (feat. Jorge Gonzalez)",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/33/00/5b/33005b53-e3ce-5425-40e1-8ca6b9a1a6a1/mzaf_13559820464646260752.plus.aac.p.m4a"
+      },
+      {
+        "number": 10,
+        "title": "Los Perros Duermen Siesta",
+        "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/24/7b/a7/247ba76e-5623-3b58-48bb-b134a6ff0743/mzaf_2433961154035436193.plus.aac.p.m4a"
+      }
+    ]
+  },
+  "editorial_data": {
+    "label_text": "2005 Casa Robot",
+    "title_png_local": "",
+    "label_png_local": "",
+    "recorded_at": "",
+    "status": "",
+    "running_time": "34:04",
+    "credits": "",
+    "liner_notes": "Compacto es el segundo disco de la banda de funk y rock chilena Papanegro. Conocido por ser su disco más pesado y experimental, destacaron sus singles 'Autonomía', 'Oye Amigo' y 'Abusé', último sencillo en que colabora Jorge González, cantante de Los Prisioneros.",
+    "card_bg_color": "#ff9300",
+    "palette_colors": [
+      "#404040",
+      "#d8cabf",
+      "#9ca4a4",
+      "#9c9ca4"
+    ],
+    "front_clean": true,
+    "front_dark_mode": true,
+    "edition_variant": "EDICIÓN ESTÁNDAR"
+  }
+}

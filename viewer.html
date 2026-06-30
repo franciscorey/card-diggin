@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card-Diggin' | Premium Interactive Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=League+Spartan:wght@800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="viewer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+</head>
+
+<body>
+
+    <div class="viewer-container" id="viewer-app">
+
+        <header class="viewer-header">
+            <span class="brand-logo">CARD-DIGGIN' PRO</span>
+            <div class="status-badge" id="player-mode">PREMIUM ARCHIVE</div>
+        </header>
+
+        <div class="main-layout-grid">
+
+            <section class="interactive-media-zone" id="media-zone">
+                <div class="scene-3d">
+                    <div id="album-card-3d" class="album-card-3d">
+                        <div class="face-3d front-jacket">
+                            <img id="album-cover" src="" alt="Front">
+                        </div>
+                        <div class="face-3d back-jacket">
+                            <img id="album-back-cover" src="" alt="Back">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-controls-row">
+                    <button id="btn-zoom-toggle" class="btn-interactive-ui">🔍 AMPLIAR DETALLE</button>
+                    <button id="btn-flip-jacket" class="btn-interactive-ui">🔄 VER REVERSO</button>
+                </div>
+            </section>
+
+            <section class="metadata-content-zone">
+                <div class="album-editorial-header">
+                    <div id="edition-pill" class="edition-pill" style="display:none;">EDICIÓN DE AUTOR</div>
+                    <h1 id="album-title">CARGANDO...</h1>
+                    <h2 id="album-artist">BY ARTIST</h2>
+                    <p class="album-meta-specs"><span id="album-genre">SYNTH-POP</span> — <span
+                            id="album-year">1990</span></p>
+                </div>
+
+                <div class="audio-player-box">
+                    <div class="track-playing-info">
+                        <span class="playing-label">DIGITAL PREVIEW SOUNDTRACK</span>
+                        <span id="current-track-title">SELECCIONA UN TRACK ABAJO</span>
+                    </div>
+                    <audio id="audio-element" controls></audio>
+                </div>
+
+                <div class="editorial-section" id="editorial-block" style="display:none;">
+                    <h3>LINER NOTES / RESEÑA HISTÓRICA</h3>
+                    <p id="liner-notes-content"></p>
+                </div>
+
+                <div class="tracks-section">
+                    <h3>TRACKLIST COMPLETO</h3>
+                    <div id="tracks-list-container"></div>
+                </div>
+
+                <div class="editorial-section" id="credits-block" style="display:none;">
+                    <h3>CRÉDITOS DE PRODUCCIÓN</h3>
+                    <p id="credits-content" class="credits-text"></p>
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="viewer-footer">
+            <p id="album-copyright">© CARD-DIGGIN' ARCHITECTURE</p>
+        </footer>
+    </div>
+
+    <script src="viewer.js"></script>
+</body>
+
+</html>
